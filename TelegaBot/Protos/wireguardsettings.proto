@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option csharp_namespace = "Server";
+
+package wireguardsetting;
+
+// The greeting service definition.
+service WireGuard {
+  // Sends a greeting
+   rpc ShowWireGuardClient (ShowWireGuardClientRequest) returns (stream ShowWireGuardClientResponse);
+   rpc NewWireGuardClient (stream NewWireGuardClientRequest) returns (NewWireGuardClientResponse);
+   rpc SendContentCofigClient(stream SendContentCofigClientRequest) returns (stream SendContentCofigClientResponse);
+   rpc DeleteWireGuardClient(stream DeleteWireGuardClientRequest) returns (DeleteWireGuardClientResponse);
+   rpc GetNumberConfigForDelete(stream GetNumberConfigForDeleteRequest) returns (stream GetNumberConfigForDeleteResponse);
+}
+
+message ShowWireGuardClientRequest {
+}
+
+message ShowWireGuardClientResponse {
+  string output_line = 1;
+}
+
+message NewWireGuardClientRequest {
+  string nameClient = 1;
+}
+
+message NewWireGuardClientResponse{
+}
+
+message SendContentCofigClientRequest{
+  string messageInput =1;
+}
+
+message SendContentCofigClientResponse{
+  string output_line=1;
+}
+
+message DeleteWireGuardClientRequest{
+  int64 numberConfig=1;
+}
+
+message DeleteWireGuardClientResponse{
+}
+
+message GetNumberConfigForDeleteRequest{
+  string nameConfig =1;
+}
+
+message GetNumberConfigForDeleteResponse{
+	int64 numberConfig=1;
+}
